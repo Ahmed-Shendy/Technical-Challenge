@@ -1,4 +1,5 @@
-
+using Microsoft.EntityFrameworkCore;
+using Technical_Challenge.model.Context;
 
 namespace Technical_Challenge
 {
@@ -18,9 +19,9 @@ namespace Technical_Challenge
 
             builder.Services.AddDependencies(builder.Configuration);
 
-            //sql connection
-            //builder.Services.AddDbContext<TourismContext>(options =>
-            //    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            // Fix: Replace 'AppContext' with a valid DbContext class
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
@@ -41,16 +42,21 @@ namespace Technical_Challenge
                 app.UseSwaggerUI();
             }
 
+            app.UseCors();
+
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
 
-
             app.MapControllers();
+            
+           // app.UseExceptionHandler();
+
 
             app.Run();
         }
     }
+
 }
