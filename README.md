@@ -105,7 +105,7 @@ GET /api/contacts/{id}
 ❌ Delete Contact
 DELETE /api/contacts/{id}
 
-📚 Models (Sample)
+# 📚 Models (Sample)
 User Model
 
 public class User {
