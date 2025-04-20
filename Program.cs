@@ -52,7 +52,7 @@ namespace Technical_Challenge
 
             app.MapControllers();
             
-           // app.UseExceptionHandler();
+            app.UseExceptionHandler();
 
 
             app.Run();
